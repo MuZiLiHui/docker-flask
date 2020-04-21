@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="../static/js/jquery-3.4.1.min.js"></script>
+    <!-- 引入 echarts.js -->
+    <script src="../static/js/echarts.min.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <a class="case" href="case01/index.html" target="_blank">
+            <h3>地图数据可视化 - 基于ECharts Geo</h3>
+            <img class="thumb" src="case01/img/thumb.jpg" />
+        </a>
+    </div>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        function DrawGraph(worktime) {
+            var myChart = echarts.init(document.getElementById('main'));
+            // 指定图表的配置项和数据
+            var option = {
+                title: {
+                    text: '各设备工作时长统计图'
+                },
+                tooltip: {},
+                legend: {
+                    data: ['工作时长/时']
+                },
+                xAxis: {
+                    data: ["设备１", "设备２", "设备３", "设备４", "设备５"]
+                },
+                yAxis: {},
+                series: [{
+                    name: '工作时长',
+                    type: 'bar',
+                    data: worktime
+                }]
+            };
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        };
+
+        $.ajax({
+            type: "get", // 请求类型（get/post）
+            url: "http://127.0.0.1:5000/machines/machine1",
+            async: true, // 是否异步
+            dataType: "json", // 设置数据类型
+            success: function (data) {
+                // 请求成功　绘制图形
+                console.log(data);
+                DrawGraph(data.worktime)
+            },
+            error: function (errorMsg) {
+                // 请求失败
+                alert("请求失败");
+            }
+        });
+    </script>
+</body>
+</html>
