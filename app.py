@@ -2,17 +2,17 @@
 from flask import Flask,render_template
 from flask_restful import reqparse, abort, Api, Resource
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='')
 ##
 ## Actually setup the Api resource routing here
 ##
 
 @app.route('/')
 def visualData():
-    return render_template("case01/index.html")
+    return app.send_static_file('index.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0",debug=True)
 
 '''
 import socket

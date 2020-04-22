@@ -13,9 +13,9 @@ def on_connect(client, userdata, flags, rc):   # 连接后的操作 0为成功
     print("Connection returned " + str(rc))
  
  
-user = "userKNP"                    # 用户名
-pwd = "F3gIebb0lBFoiuqa"                       # 密码
-endpoint =  "mqtt.eclipse.org"            # 连接地址 "broker.mqttdashboard.com" 
+user = "userKNP"                          # 用户名
+pwd = "F3gIebb0lBFoiuqa"                  # 密码
+endpoint = "mqtt.eclipse.org"           # 连接地址 "broker.mqttdashboard.com"   
 port =  1883                      # 1883为服务端口号，如果是安全认证，端口号需要修改为1884 31338
 topic = "testtopic/1"            # 发布消息主题
  

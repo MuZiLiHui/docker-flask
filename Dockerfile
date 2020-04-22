@@ -1,7 +1,7 @@
 # Dockerfile
 
 # 使用 Python 运行时作为基础镜像
-FROM python:3.7-slim
+FROM daocloud.io/library/python
 
 # 设置 /app 为工作路径
 WORKDIR /app
@@ -10,10 +10,10 @@ WORKDIR /app
 ADD . /app
 
 # 安装 requirements.txt 中指定的包
-RUN pip install --trusted-host pypi.python.org -r requirements.txt
+RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
 
-# 对容器外开放80端口
-EXPOSE 80
+# 对容器外开放5000端口
+EXPOSE 5000
 
 # 定义环境变量
 ENV NAME World

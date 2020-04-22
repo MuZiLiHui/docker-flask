@@ -4,7 +4,7 @@ import time
  
 user = "userKNP"                    # 用户名
 pwd = "F3gIebb0lBFoiuqa"                       # 密码
-endpoint = "mqtt.eclipse.org"              # 连接地址
+endpoint =  "mqtt.eclipse.org"        # 连接地址 "mqtt.eclipse.org"   
 port = 1883                       # 1883为服务端口号，如果是安全认证，端口号需要修改为1884
 topic = "testtopic/1"            # 发布消息主题
 
